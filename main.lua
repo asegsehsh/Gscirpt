@@ -1,4 +1,4 @@
-local place = game.placeid
+local place = game.PlaceId
 
 if place == 6679968919 then
   loadstring(game:HttpGet("https://github.com/asegsehsh/Gscirpt/blob/main/scripts/Fly%20Race",true))()
