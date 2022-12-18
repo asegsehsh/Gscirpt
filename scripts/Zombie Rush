@@ -1,0 +1,29 @@
+while true do
+    local small = math.huge;
+    local thing = nil;
+    for i, v in pairs(workspace["Zombie Storage"]:GetChildren()) do
+        pcall(function()
+            if v.Humanoid.Health > 0 and v.Humanoid.Health < small then
+                thing = v;
+                small = v.Humanoid.Health;
+            end;
+        end);
+    end;
+    pcall(function()
+        local args = {
+            [1] = {
+                Tool = (game:GetService("Players")).LocalPlayer.Character:FindFirstChildOfClass("Tool"),
+                RealTool = (game:GetService("Players")).LocalPlayer.Character:FindFirstChildOfClass("Tool"),
+                HumanoidTables = {
+                    [1] = {
+                        HeadHits = 0,
+                        THumanoid = thing.Humanoid,
+                        BodyHits = 50
+                    }
+                }
+            }
+        };
+        (game:GetService("ReplicatedStorage")).Remotes.WeaponEvent:FireServer(unpack(args));
+    end);
+    task.wait(0.05);
+end;
