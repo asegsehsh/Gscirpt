@@ -1,0 +1,165 @@
+--https://www.roblox.com/games/6993813623/Olympia-NEWS
+local repo = 'https://raw.githubusercontent.com/wally-rblx/LinoriaLib/main/'
+local rs = game.ReplicatedStorage
+local Library = loadstring(game:HttpGet(repo .. 'Library.lua'))()
+local ThemeManager = loadstring(game:HttpGet(repo .. 'addons/ThemeManager.lua'))()
+local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
+
+local Window = Library:CreateWindow({
+    Title = 'Monkey Tycoon',
+    Center = true, 
+    AutoShow = true,
+})
+
+local Tabs = {
+    Main = Window:AddTab('Main')
+}
+
+local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Groupbox')
+
+LeftGroupBox:AddToggle('all', {
+    Text = 'Worksout all',
+    Default = false,
+    Tooltip = '',
+})
+LeftGroupBox:AddToggle('abs', {
+    Text = 'Worksout Core',
+    Default = false,
+    Tooltip = '',
+})
+LeftGroupBox:AddToggle('bic', {
+    Text = 'Worksout Biceps',
+    Default = false,
+    Tooltip = '',
+})
+LeftGroupBox:AddToggle('peit', {
+    Text = 'Worksout Pectoral',
+    Default = false,
+    Tooltip = '',
+})
+LeftGroupBox:AddToggle('tri', {
+    Text = 'Worksout Triceps',
+    Default = false,
+    Tooltip = '',
+})
+LeftGroupBox:AddToggle('back', {
+    Text = 'Worksout Back',
+    Default = false,
+    Tooltip = '',
+})
+LeftGroupBox:AddToggle('leg', {
+    Text = 'Worksout Leg',
+    Default = false,
+    Tooltip = '',
+})
+LeftGroupBox:AddToggle('energy', {
+    Text = 'Gives Energy',
+    Default = false,
+    Tooltip = '',
+})
+
+LeftGroupBox:AddButton({
+    Text = 'Add 25 Ton Weight',
+    Func = function()
+        for i=1,10 do
+            game:GetService("ReplicatedStorage").Pesos.AddPesos.AddTwentyFiveTon:FireServer()
+            wait(0.1)
+        end
+    end,
+    Tooltip = 'Put 25 Ton Weights on'
+})
+
+Toggles.all:OnChanged(function()
+    all = Toggles.all.Value
+end)
+Toggles.energy:OnChanged(function()
+    energy = Toggles.energy.Value
+end)
+Toggles.abs:OnChanged(function()
+    abs = Toggles.abs.Value
+end)
+Toggles.bic:OnChanged(function()
+    bic = Toggles.bic.Value
+end)
+Toggles.peit:OnChanged(function()
+    peit = Toggles.peit.Value
+end)
+Toggles.tri:OnChanged(function()
+    tri = Toggles.tri.Value
+end)
+Toggles.back:OnChanged(function()
+    back = Toggles.back.Value
+end)
+Toggles.leg:OnChanged(function()
+    leg = Toggles.leg.Value
+end)
+
+coroutine.wrap(function()
+    while task.wait() do
+        if all then
+            rs.Remotes.Plus.ServerPlusAb:FireServer()
+            rs.Remotes.Plus.Secondary.ServerPlusBic:FireServer()
+            rs.Remotes.Plus.ServerPlusPeit:FireServer()
+            rs.Remotes.Plus.ServerPlusTri:FireServer()
+            rs.Remotes.Plus.ServerPlusBack:FireServer()
+            rs.Remotes.Plus.ServerPlusLeg:FireServer()
+        end
+    end
+end)()
+
+coroutine.wrap(function()
+    while task.wait() do
+        if abs then
+            rs.Remotes.Plus.ServerPlusAb:FireServer()
+        end
+    end
+end)()
+
+coroutine.wrap(function()
+    while task.wait() do
+        if energy then
+            game.ReplicatedStorage.Remotes.EnergyFatigue.ServerRegen:FireServer()
+        end
+    end
+end)()
+
+
+coroutine.wrap(function()
+    while task.wait() do
+        if bic then
+            rs.Remotes.Plus.Secondary.ServerPlusBic:FireServer()
+        end
+    end
+end)()
+
+coroutine.wrap(function()
+    while task.wait() do
+        if peit then
+            rs.Remotes.Plus.ServerPlusPeit:FireServer()
+        end
+    end
+end)()
+
+coroutine.wrap(function()
+    while task.wait() do
+        if tri then
+            rs.Remotes.Plus.ServerPlusTri:FireServer()
+        end
+    end
+end)()
+
+coroutine.wrap(function()
+    while task.wait() do
+        if back then
+            rs.Remotes.Plus.ServerPlusBack:FireServer()
+        end
+    end
+end)()
+
+coroutine.wrap(function()
+    while task.wait() do
+        if leg then
+            rs.Remotes.Plus.ServerPlusLeg:FireServer()
+        end
+    end
+end)()
