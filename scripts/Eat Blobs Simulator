@@ -1,3 +1,4 @@
+-- https://www.roblox.com/games/8200787440/Eat-Blobs-Simulator
 local plr = game.Players.LocalPlayer
 local mepart = plr.Character.HumanoidRootPart
 while wait(1) do
