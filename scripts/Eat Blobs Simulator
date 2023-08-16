@@ -1,0 +1,19 @@
+local plr = game.Players.LocalPlayer
+local mepart = plr.Character.HumanoidRootPart
+while wait(1) do
+	for i,v in next, workspace.Orbs:GetChildren() do
+		firetouchinterest(mepart, v, 0)
+		firetouchinterest(mepart, v, 1)
+	end
+	for i,v in next, game.Players:GetPlayers() do
+		if v and v ~= plr and v.Character.HumanoidRootPart.RealSize then
+			local size = v.Character.HumanoidRootPart.RealSize.Value
+			if size < plr.Character.HumanoidRootPart.RealSize.Value then
+				print("gotcha nigga")
+				firetouchinterest(mepart, v.Character.HumanoidRootPart, 0)
+				task.wait()
+				firetouchinterest(mepart, v.Character.HumanoidRootPart, 1)
+			end
+		end
+	end
+end
