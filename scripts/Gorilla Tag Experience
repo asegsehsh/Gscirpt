@@ -1,0 +1,40 @@
+-- https://www.roblox.com/games/8877152338/SOON-Gorilla-Tag-Experience
+
+local plr = game.Players.LocalPlayer
+local chr = plr.Character
+local primary = chr.PrimaryPart
+local hrp = chr.HumanoidRootPart
+local head = chr.Head
+
+function whosit()
+	for i,v in next, game.Players:GetPlayers() do
+		if v and v.Character and v.Character:FindFirstChild("TorsoGorilla") and v.Character.TorsoGorilla:FindFirstChild("ParticleEmitter") and v.Character.TorsoGorilla:FindFirstChild("ParticleEmitter").Texture == "rbxassetid://405886187" then
+			it = v
+			print(it.Name .. " is it")
+			return it
+		end
+	end
+end
+
+function beit()
+	local target = whosit().Character.HumanoidRootPart
+	firetouchinterest(hrp, target, 0)
+	firetouchinterest(hrp, target, 1)
+	wait(.5)
+end
+
+function touchall()
+	beit()
+	if chr.Humanoid.WalkSpeed == 7 then
+		repeat wait(0.25) until chr.Humanoid.WalkSpeed ~= 7
+	end
+	for i,v in next, game.Players:GetPlayers() do
+		if v and v ~= plr then
+			local target = v.Character.HumanoidRootPart
+			firetouchinterest(hrp, target, 0)
+			firetouchinterest(hrp, target, 1)
+		end
+	end
+end
+
+touchall()
